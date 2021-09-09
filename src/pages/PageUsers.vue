@@ -2,8 +2,8 @@
   <q-page class="q-pa-md">
     <q-list separator>
       <q-item
-        v-for="user in users"
-        :key="user.id"
+        v-for="(user,key) in users"
+        :key="key"
         class="q-my-sm"
         clickable
         v-ripple
@@ -14,7 +14,6 @@
             {{ user.name.charAt(0) }}
           </q-avatar>
         </q-item-section>
-
         <q-item-section>
           <q-item-label>{{ user.name }}</q-item-label>
         </q-item-section>
@@ -30,27 +29,31 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 export default {
-  data() {
-    return {
-      users: [
-        {
-          id: 1,
-          name: "Ruddy",
-          online:true,
-        },
-        {
-          id: 2,
-          name: "Mallorie",
-          online:false,
-        },
-        {
-          id: 3,
-          name: "Elisabetta",
-          online:true,
-        },
-      ],
-    };
-  },
+  // data() {
+  //   return {
+  //     // users: [
+  //       // {
+  //       //   id: 1,
+  //       //   name: "Ruddy",
+  //       //   online:true,
+  //       // },
+  //       // {
+  //       //   id: 2,
+  //       //   name: "Mallorie",
+  //       //   online:false,
+  //       // },
+  //       // {
+  //       //   id: 3,
+  //       //   name: "Elisabetta",
+  //       //   online:true,
+  //       // },
+  //     // ],
+  //   };
+  // },
+  computed:{
+    ...mapGetters('s',['users'])
+  }
 };
 </script>

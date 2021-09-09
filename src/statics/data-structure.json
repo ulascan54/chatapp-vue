@@ -1,40 +1,50 @@
 {
-  "users": {
-    "USERID1": {
-      "name": "Ulaş",
-      "email": "ulascandemirbag@gmail.com",
-      "online": true
+  "chats" : {
+    "3vUjpZSoPScUrzvo4w0CmGrQCv73" : {
+      "54nDFULSnrOh2zAq8nJUAe4JA3Y2" : {
+        "MESSAGEID1" : {
+          "from" : "them",
+          "text" : "naber nasılsın???"
+        },
+        "MESSAGEID2" : {
+          "from" : "me",
+          "text" : "iyi kanka sennn"
+        }
+      }
     },
-    "USERID2": {
-      "name": "ayla",
-      "email": "ayla@gmail.com",
-      "online": true
+    "54nDFULSnrOh2zAq8nJUAe4JA3Y2" : {
+      "3vUjpZSoPScUrzvo4w0CmGrQCv73" : {
+        "MESSAGEID1" : {
+          "from" : "me",
+          "text" : "naber nasılsın???"
+        },
+        "MESSAGEID2" : {
+          "from" : "them",
+          "text" : "iyi kanka sennn"
+        }
+      }
     }
   },
-  "chats": {
-    "USERID1": {
-      "USERID2": {
-        "MESSAGEID1": {
-          "text": "naber nasılsın???",
-          "from": "them"
-        },
-        "MESSAGEID2": {
-          "text": "iyi kanka sennn",
-          "from": "me"
-        }
-      }
+  "users" : {
+    "3vUjpZSoPScUrzvo4w0CmGrQCv73" : {
+      "email" : "u@u.com",
+      "name" : "Ulaş",
+      "online" : false
     },
-    "USERID2": {
-      "USERID1": {
-        "MESSAGEID1": {
-          "text": "naber nasılsın???",
-          "from": "me"
-        },
-        "MESSAGEID2": {
-          "text": "iyi kanka sennn",
-          "from": "them"
-        }
-      }
+    "54nDFULSnrOh2zAq8nJUAe4JA3Y2" : {
+      "email" : "t@t.com",
+      "name" : "Test",
+      "online" : false
+    },
+    "E5bnCExrzgdSksgCTljL6TKbAwC3" : {
+      "email" : "ulascan54@t.com",
+      "name" : "sad",
+      "online" : false
+    },
+    "sOPrBuBqz3R47KcdeReA25MlCbx1" : {
+      "email" : "ulascan@sadeac.com",
+      "name" : "Ulaş Can Demirbağ",
+      "online" : false
     }
   }
 }
