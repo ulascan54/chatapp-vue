@@ -10,7 +10,6 @@ const mutations = {
 };
 const actions = {
   registerUser({}, payload) {
-    console.log("registerUser", payload);
     firebaseAuth
       .createUserWithEmailAndPassword(payload.email, payload.password)
       .then((response) => {
@@ -34,7 +33,10 @@ const actions = {
         console.log(error.message);
       });
   },
-  handleAuthStateChanged({ commit }) {
+  logoutUser() {
+    firebaseAuth.signOut();
+  },
+  handleAuthStateChanged({ commit, dispatch, state }) {
     firebaseAuth.onAuthStateChanged((user) => {
       if (user) {
         // User is logged in.
@@ -44,15 +46,31 @@ const actions = {
           commit("setUserDetails", {
             name: userDetails.name,
             email: userDetails.email,
-            userId: userId
+            userId: userId,
           });
         });
+        dispatch("firebaseUpdateUser", {
+          userId: userId,
+          updates: {
+            online: true,
+          },
+        });
+        this.$router.push("/");
       } else {
         // User is logged out.
-        commit("setUserDetails", {})
-
+        dispatch("firebaseUpdateUser", {
+          userId: state.userDetails.userId,
+          updates: {
+            online: false,
+          },
+        });
+        commit("setUserDetails", {});
+        this.$router.replace("/auth");
       }
     });
+  },
+  firebaseUpdateUser({}, payload) {
+    firebaseDb.ref("users/" + payload.userId).update(payload.updates)
   },
 };
 const getters = {};

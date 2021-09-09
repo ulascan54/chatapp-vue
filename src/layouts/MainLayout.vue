@@ -9,11 +9,22 @@
           flat
         />
         <q-btn
-           to="/auth"
+          v-if="!userDetails.userId"
+          to="/auth"
           icon="account_circle login"
           class="absolute-right q-pr-lg"
           flat
         />
+        <q-btn
+          v-else
+          @click="logoutUser"
+          to="/auth"
+          icon="power_settings_new logout"
+          class="absolute-right q-pr-lg"
+          flat
+        >
+        </q-btn
+        ><span class="top-text absolute-right">{{ userDetails.name }}</span>
 
         <q-toolbar-title class="absolute-center">
           {{ title }}
@@ -28,10 +39,10 @@
 </template>
 
 <script>
-import { openURL } from "quasar";
-
+import { mapState, mapActions } from "vuex";
 export default {
   computed: {
+    ...mapState("s", ["userDetails"]),
     title() {
       console.log(this.$route);
       let currentPath = this.$route.fullPath;
@@ -41,7 +52,16 @@ export default {
     },
   },
   methods: {
-    openURL,
+    ...mapActions("s", ["logoutUser"]),
   },
 };
 </script>
+<style lang="sass">
+.q-toolbar
+  .q-btn
+    top:-10px
+.top-text
+  font-size:10px
+  top:32px
+  right:8px
+</style>
