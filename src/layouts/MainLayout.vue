@@ -6,21 +6,22 @@
           v-if="$route.fullPath.includes('/chat')"
           @click="$router.go(-1)"
           icon="arrow_back people_alt"
+          class="q-mt-sm absolute-left"
           flat
         />
         <q-btn
           v-if="!userDetails.userId"
           to="/auth"
           icon="account_circle login"
-          class="absolute-right q-pr-lg"
+          class="absolute-right q-pr-lg q-mt-sm"
           flat
         />
         <q-btn
           v-else
           @click="logoutUser"
           to="/auth"
-          icon="power_settings_new logout"
-          class="absolute-right q-pr-lg"
+          icon="power_settings_new"
+          class="absolute-right q-pr-sm"
           flat
         >
         </q-btn

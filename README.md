@@ -17,7 +17,7 @@ Yapılanlar , Planlananlar:
 - [x] Kullanıcı mesajları dinamik olarak databaseden çekildi
 - [x] Kullanıcı nin verileri mesaj bölümüne aktrıldı
 - [x] Kullanıcının online olup olmadığını gösteren panel dinamik yapıldı
-- []
+- [x] Kullanıcılar arası dinamik mesajlaşma yapıldı !!!!!
 
 ## Install the dependencies
 

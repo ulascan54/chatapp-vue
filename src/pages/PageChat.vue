@@ -1,6 +1,10 @@
 <template>
   <q-page class="flex column bg-grey-8">
-    <q-banner  v-if="!otherUserDetails.online" inline-actions class="bg-grey-4 text-center">
+    <q-banner
+      v-if="!otherUserDetails.online"
+      inline-actions
+      class="bg-grey-4 text-center"
+    >
       <q-icon name="wifi_off" color="grey-8" :size="'20px'" class="q-mr-sm" />
       {{ otherUserDetails.name }} şuan aktif değil !
     </q-banner>
@@ -62,12 +66,18 @@ export default {
     ...mapState("s", ["messages", "userDetails"]),
   },
   methods: {
-    ...mapActions("s", ["firebaseGetMessages", "firebaseStopGettingMessages"]),
+    ...mapActions("s", [
+      "firebaseGetMessages",
+      "firebaseStopGettingMessages",
+      "firebaseSendMessage",
+    ]),
     sendMessage() {
-      console.log(this.newMessage);
-      this.messages.push({
-        text: this.newMessage,
-        from: "me",
+      this.firebaseSendMessage({
+        message: {
+          text: this.newMessage,
+          from: "me",
+        },
+        otherUserId:this.$route.params.otherUserId
       });
       this.newMessage = "";
     },

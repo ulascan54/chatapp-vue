@@ -130,6 +130,16 @@ const actions = {
       commit("clearMessages");
     }
   },
+  firebaseSendMessage({}, payload) {
+    console.log("uasdasdsad" , payload);
+    firebaseDb.ref(
+      "chats/" + state.userDetails.userId + "/" + payload.otherUserId
+    ).push(payload.message)
+    payload.message.from ='them'
+    firebaseDb.ref(
+      "chats/" + payload.otherUserId + "/" + state.userDetails.userId
+    ).push(payload.message)
+  },
 };
 const getters = {
   users: (state) => {
