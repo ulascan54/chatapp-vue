@@ -1,6 +1,21 @@
 # Chat App (chatapp-vue)
 
-A Quasar Framework app
+Yapılanlar , Planlananlar:
+
+[x] Sayfaların route ayarı yapıldı
+[x] Kullanıclar sayfası tasarlandı
+[x] Mesaj sayfası tasarlandı
+[x] Login ve register sayfası oluşturuldu tasarlandı
+[x] Login ve register sayfası componenti tasarlandı
+[x] Firebase projeye eklendi, config yapıldı
+[x] Fire base db tasarımı yapıldı
+[]
+[]
+[]
+[]
+[]
+[]
+[]
 
 ## Install the dependencies
 ```bash
