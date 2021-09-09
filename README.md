@@ -18,6 +18,16 @@ Yapılanlar , Planlananlar:
 - [x] Kullanıcı nin verileri mesaj bölümüne aktrıldı
 - [x] Kullanıcının online olup olmadığını gösteren panel dinamik yapıldı
 - [x] Kullanıcılar arası dinamik mesajlaşma yapıldı !!!!!
+- [x] Mesaj scroll yapıldı
+- [x] Mesaj arka plan güncelleştirildi
+- [x] Vercel Deploy alindi proje tamamlandı
+
+## Ekran Görüntüleri
+
+![.](./ssler/1.png)
+![.](./ssler/2.png)
+![.](./ssler/3.png)
+![.](./ssler/4.png)
 
 ## Install the dependencies
 
