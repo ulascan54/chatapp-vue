@@ -14,7 +14,7 @@ Yapılanlar , Planlananlar:
 - [x] Kullanıcının login olup olmama durumuna göre state güncellendi
 - [x] Kullanıcının online olup olmadığını real time olarak db ye yazdırıldı
 - [x] Kullanıclar sayfası data base ile ilişkilendirildi
-- []
+- [x] Kullanıcı mesajları dinamik olarak databaseden çekildi
 - []
 
 ## Install the dependencies

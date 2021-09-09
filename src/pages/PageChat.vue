@@ -1,7 +1,7 @@
 <template>
   <q-page class="flex column">
     <q-banner inline-actions class="bg-grey-4 text-center">
-      <q-icon name="wifi_off" color="grey-8" :size="'20px'" class="q-mr-sm"/>
+      <q-icon name="wifi_off" color="grey-8" :size="'20px'" class="q-mr-sm" />
       Kullanıcı şuan aktif değil !
     </q-banner>
     <div class="q-pa-md column col justify-end">
@@ -44,27 +44,18 @@
 </template>
 
 <script>
+import { mapActions, mapState } from "vuex";
 export default {
   data() {
     return {
       newMessage: "",
-      messages: [
-        {
-          text: "Naber nasılsın",
-          from: "me",
-        },
-        {
-          text: "iyi knk sen",
-          from: "them",
-        },
-        {
-          text: "İyi ne olsun",
-          from: "me",
-        },
-      ],
     };
   },
+  computed: {
+    ...mapState("s", ["messages"]),
+  },
   methods: {
+    ...mapActions("s", ["firebaseGetMessages", "firebaseStopGettingMessages"]),
     sendMessage() {
       console.log(this.newMessage);
       this.messages.push({
@@ -73,6 +64,13 @@ export default {
       });
       this.newMessage = "";
     },
+  },
+  mounted() {
+    this.firebaseGetMessages(this.$route.params.otherUserId);
+  },
+  unmounted() {
+    console.log("çalıştı");
+    this.firebaseStopGettingMessages();
   },
 };
 </script>

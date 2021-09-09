@@ -1,8 +1,9 @@
 import { firebaseAuth, firebaseDb } from "src/boot/firebase";
-
+let messagesRef;
 const state = {
   userDetails: {},
   users: {},
+  messages: {},
 };
 const mutations = {
   setUserDetails(state, payload) {
@@ -13,6 +14,12 @@ const mutations = {
   },
   updateUser(state, payload) {
     Object.assign(state.users[payload.userId], payload.userDetails);
+  },
+  addMessage(state, payload) {
+    state.messages[payload.messageId] = payload.messageDetails;
+  },
+  clearMessages(state) {
+    state.messages = {};
   },
 };
 const actions = {
@@ -84,10 +91,17 @@ const actions = {
     firebaseDb.ref("users").on("child_added", (snapshot) => {
       let userDetails = snapshot.val();
       let userId = snapshot.key;
-      commit("addUser", {
-        userId,
-        userDetails,
-      });
+      if (
+        userId !== undefined ||
+        userDetails !== undefined ||
+        userDetails !== null ||
+        userId !== null
+      ) {
+        commit("addUser", {
+          userId,
+          userDetails,
+        });
+      }
     });
     firebaseDb.ref("users").on("child_changed", (snapshot) => {
       let userDetails = snapshot.val();
@@ -97,6 +111,24 @@ const actions = {
         userDetails,
       });
     });
+  },
+  firebaseGetMessages({ commit, state }, otherUserId) {
+    let userId = state.userDetails.userId;
+    messagesRef = firebaseDb.ref("chats/" + userId + "/" + otherUserId);
+    messagesRef.on("child_added", (snapshot) => {
+      let messageDetails = snapshot.val();
+      let messageId = snapshot.key;
+      commit("addMessage", {
+        messageId,
+        messageDetails,
+      });
+    });
+  },
+  firebaseStopGettingMessages({ commit }) {
+    if (messagesRef) {
+      messagesRef.off("child_added");
+      commit("clearMessages");
+    }
   },
 };
 const getters = {
