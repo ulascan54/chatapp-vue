@@ -1,5 +1,5 @@
 <template>
-  <q-page class="q-pa-md " >
+  <q-page class="q-pa-md bg-grey-7">
     <q-card>
       <q-tabs
         v-model="tab"
