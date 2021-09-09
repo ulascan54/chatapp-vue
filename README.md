@@ -15,6 +15,8 @@ Yapılanlar , Planlananlar:
 - [x] Kullanıcının online olup olmadığını real time olarak db ye yazdırıldı
 - [x] Kullanıclar sayfası data base ile ilişkilendirildi
 - [x] Kullanıcı mesajları dinamik olarak databaseden çekildi
+- [x] Kullanıcı nin verileri mesaj bölümüne aktrıldı
+- [x] Kullanıcının online olup olmadığını gösteren panel dinamik yapıldı
 - []
 
 ## Install the dependencies

@@ -1,15 +1,18 @@
 <template>
-  <q-page class="flex column">
-    <q-banner inline-actions class="bg-grey-4 text-center">
+  <q-page class="flex column bg-grey-8">
+    <q-banner  v-if="!otherUserDetails.online" inline-actions class="bg-grey-4 text-center">
       <q-icon name="wifi_off" color="grey-8" :size="'20px'" class="q-mr-sm" />
-      Kullanıcı şuan aktif değil !
+      {{ otherUserDetails.name }} şuan aktif değil !
     </q-banner>
     <div class="q-pa-md column col justify-end">
       <q-chat-message
         v-for="(message, index) in messages"
         :key="index"
-        :name="message.from"
+        class="text-white"
+        :bg-color="message.from == 'me' ? 'dark' : 'grey-4'"
+        :name="message.from == 'me' ? userDetails.name : otherUserDetails.name"
         :text="[message.text]"
+        :text-color="message.from == 'me' ? 'white' : 'dark'"
         :sent="message.from === 'me' ? true : false"
       />
     </div>
@@ -33,6 +36,8 @@
                 dense
                 flat
                 icon="chat_bubble"
+                class="q-mt-md"
+                size="1.3rem"
                 color="white"
               ></q-btn>
             </template>
@@ -45,14 +50,16 @@
 
 <script>
 import { mapActions, mapState } from "vuex";
+import mixinOtherUsersDetails from "../mixins/mixin-other-user-details.js";
 export default {
+  mixins: [mixinOtherUsersDetails],
   data() {
     return {
       newMessage: "",
     };
   },
   computed: {
-    ...mapState("s", ["messages"]),
+    ...mapState("s", ["messages", "userDetails"]),
   },
   methods: {
     ...mapActions("s", ["firebaseGetMessages", "firebaseStopGettingMessages"]),
