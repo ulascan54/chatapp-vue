@@ -10,8 +10,8 @@ Yapılanlar , Planlananlar:
 [x] Firebase projeye eklendi, config yapıldı
 [x] Fire base db tasarımı yapıldı
 [x] Login ve register (auth) işlemleri yapıldı
-[]
-[]
+[x] Kullanıcı state e eklendi,
+[x]  Kullanıcının login olup olmama durumuna göre state güncellendi
 []
 []
 []
