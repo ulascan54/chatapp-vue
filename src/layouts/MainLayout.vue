@@ -48,7 +48,6 @@ export default {
   computed: {
     ...mapState("s", ["userDetails"]),
     title() {
-      console.log(this.$route);
       let currentPath = this.$route.fullPath;
       if (currentPath == "/") return "ScreetChat";
       else if (currentPath.includes("/chat")) return this.otherUserDetails.name;
